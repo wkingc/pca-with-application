@@ -426,7 +426,7 @@ round(farmstressS1_pca_loadings[, 1:10], 2)
 
 ```{r pcStressBiplot, eval = TRUE, echo = FALSE, results = TRUE, warning = FALSE, message = FALSE, fig.width = 9, fig.height = 7}
 # Verify that the variance of the variables is approximated by the length of the vectors from the loadings matrix.
-farmstressS1_var <- apply(farmstressS1[, c(-1, -2)], 2, var, na.rm = TRUE)
+farmstressS1_var <- apply(farmstressS1, 2, var, na.rm = TRUE)
 
 farmstressS1_pca_loadings_length <- sqrt(farmstressS1_pca_loadings[, "PC1"]^2 + farmstressS1_pca_loadings[, "PC2"]^2)
 
