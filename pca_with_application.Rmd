@@ -9,8 +9,8 @@ output:
 
 ```{r libraries, eval = TRUE, echo = FALSE, results = FALSE, warning = FALSE, message = FALSE}
 package_loader <- function(x, ...) {
-  if (x %in% rownames(installed.packages()) == FALSE) install.packages(x)
-  library(x, ...)
+    if (x %in% rownames(installed.packages()) == FALSE) install.packages(x)
+    library(x, ...)
 }
 
 packages <- c("knitr", "bookdown", "kableExtra", "reshape2", "Hmisc", "dplyr", "DT", "scatterplot3d", "rgl", "ggplot2", "ellipse", "lattice")
@@ -94,7 +94,7 @@ What is the direction of most variability for x1 and x2?
 
 ```{r 2dData, eval = TRUE, echo = FALSE, results = TRUE, warning = FALSE, message = FALSE}
 # 2d Data
-plot(x1, x2, xlim=c(-2.5, 2.5), ylim=c(-2.5, 2.5), col = "#00336677", pch = 16)
+plot(x1, x2, xlim = c(-2.5, 2.5), ylim = c(-2.5, 2.5), col = "#00336677", pch = 16)
 ```
 
 ## PC1
@@ -102,58 +102,58 @@ plot(x1, x2, xlim=c(-2.5, 2.5), ylim=c(-2.5, 2.5), col = "#00336677", pch = 16)
 What is the direction that explains the second most amount of variation?
 
 ```{r 2dDataPC1, eval = TRUE, echo = FALSE, results = TRUE, warning = FALSE, message = FALSE}
-plot(x1, x2, xlim=c(-2.5, 2.5), ylim=c(-2.5, 2.5), col = "#00336677", pch = 16)
-segments(x0=min(X1[,1]), y0=min(X1[,2]), x1=max(X1[,1]), y1=max(X1[,2]), col="#FF0000", lwd=2)
-text(x=max(X1[,1])*1.05, y=max(X1[,2])*1.05, "PC1 (64%)")
+plot(x1, x2, xlim = c(-2.5, 2.5), ylim = c(-2.5, 2.5), col = "#00336677", pch = 16)
+segments(x0 = min(X1[,1]), y0 = min(X1[,2]), x1 = max(X1[,1]), y1 = max(X1[,2]), col = "#FF0000", lwd = 2)
+text(x = max(X1[,1])*1.05, y = max(X1[,2])*1.05, "PC1 (64%)")
 ```
 
 ## PC2
 
 ```{r 2dDataPC1PC2, eval = TRUE, echo = FALSE, results = TRUE, warning = FALSE, message = FALSE}
 # 2d data pc1 pc2
-plot(x1, x2, xlim=c(-2.5, 2.5), ylim=c(-2.5, 2.5), col = "#00336677", pch = 16)
-segments(x0=min(X1[,1]), y0=min(X1[,2]), x1=max(X1[,1]), y1=max(X1[,2]), col="#FF0000", lwd=2)
-segments(x0=min(X2[,1])*1.5, y0=max(X2[,2])*1.5, x1=max(X2[,1])*1.5, y1=min(X2[,2])*1.5, col="#FF0000", lwd=2)
+plot(x1, x2, xlim = c(-2.5, 2.5), ylim = c(-2.5, 2.5), col  =  "#00336677", pch  =  16)
+segments(x0 = min(X1[,1]), y0 = min(X1[,2]), x1 = max(X1[,1]), y1 = max(X1[,2]), col = "#FF0000", lwd = 2)
+segments(x0 = min(X2[,1])*1.5, y0 = max(X2[,2])*1.5, x1 = max(X2[,1])*1.5, y1 = min(X2[,2])*1.5, col = "#FF0000", lwd = 2)
 
-text(x=max(X1[,1])*1.05, y=max(X1[,2])*1.05, "PC1 (64%)")
-text(x=min(X2[,1])*1.61, y=max(X2[,2])*1.61, "PC2 (36%)")
+text(x = max(X1[,1])*1.05, y = max(X1[,2])*1.05, "PC1 (64%)")
+text(x = min(X2[,1])*1.61, y = max(X2[,2])*1.61, "PC2 (36%)")
 ```
 
 ## Projection of Data onto PC1
 
 ```{r 2dDataPC1scorePC2, eval = TRUE, echo = FALSE, results = TRUE, warning = FALSE, message = FALSE}
-plot(x1, x2, xlim=c(-2.5, 2.5), ylim=c(-2.5, 2.5), col = "#00336677", pch = 16)
-segments(x0=min(X1[,1]), y0=min(X1[,2]), x1=max(X1[,1]), y1=max(X1[,2]), col="#FF0000", lwd=2)
-points(X1[,1], X1[,2], col = "#00000077", pch = 16, cex=1) #PC1
+plot(x1, x2, xlim = c(-2.5, 2.5), ylim = c(-2.5, 2.5), col  =  "#00336677", pch  =  16)
+segments(x0 = min(X1[,1]), y0 = min(X1[,2]), x1 = max(X1[,1]), y1 = max(X1[,2]), col = "#FF0000", lwd = 2)
+points(X1[,1], X1[,2], col = "#00000077", pch = 16, cex = 1) #PC1
 
-segments(x0=min(X2[,1])*1.5, y0=max(X2[,2])*1.5, x1=max(X2[,1])*1.5, y1=min(X2[,2])*1.5, col="#FF0000", lwd=2)
+segments(x0 = min(X2[,1])*1.5, y0 = max(X2[,2])*1.5, x1 = max(X2[,1])*1.5, y1 = min(X2[,2])*1.5, col = "#FF0000", lwd = 2)
 
-segments(x0=x1[13], y0=x2[13], x1=X1[13,1], y1=X1[13,2], col="#339900", lwd=2, lty=1)
-points(x1[13], x2[13], col = "purple", pch=16, cex=2)
-points(X1[13,1], X1[13,2], col = "#FF66FF", pch = 16, cex=1.5)
+segments(x0 = x1[13], y0 = x2[13], x1 = X1[13,1], y1 = X1[13,2], col = "#339900", lwd = 2, lty = 1)
+points(x1[13], x2[13], col = "purple", pch = 16, cex = 2)
+points(X1[13,1], X1[13,2], col = "#FF66FF", pch  =  16, cex = 1.5)
 
-text(x=max(X1[,1])*1.05, y=max(X1[,2])*1.05, "PC1 (64%)")
-text(x=min(X2[,1])*1.61, y=max(X2[,2])*1.61, "PC2 (36%)")
+text(x = max(X1[,1])*1.05, y = max(X1[,2])*1.05, "PC1 (64%)")
+text(x = min(X2[,1])*1.61, y = max(X2[,2])*1.61, "PC2 (36%)")
 ```
 
 ## Projection of Data onto PC2
 
 ```{r 2dDataPC1scorePC2scores, eval = TRUE, echo = FALSE, results = TRUE, warning = FALSE, message = FALSE}
 # 2d data pc1 scores pc2 scores
-plot(x1, x2, xlim=c(-2.5, 2.5), ylim=c(-2.5, 2.5), col = "#00336677", pch = 16)
-segments(x0=min(X1[,1]), y0=min(X1[,2]), x1=max(X1[,1]), y1=max(X1[,2]), col="#FF0000", lwd=2)
-segments(x0=min(X2[,1])*1.5, y0=max(X2[,2])*1.5, x1=max(X2[,1])*1.5, y1=min(X2[,2])*1.5, col="#FF0000", lwd=2)
-points(X1[,1], X1[,2], col = "#00000077", pch = 16, cex=1) #PC1
-points(X2[,1], X2[,2], col = "#00000077", pch = 16, cex=1)
+plot(x1, x2, xlim = c(-2.5, 2.5), ylim = c(-2.5, 2.5), col  =  "#00336677", pch  =  16)
+segments(x0 = min(X1[,1]), y0 = min(X1[,2]), x1 = max(X1[,1]), y1 = max(X1[,2]), col = "#FF0000", lwd = 2)
+segments(x0 = min(X2[,1])*1.5, y0 = max(X2[,2])*1.5, x1 = max(X2[,1])*1.5, y1 = min(X2[,2])*1.5, col = "#FF0000", lwd = 2)
+points(X1[,1], X1[,2], col = "#00000077", pch = 16, cex = 1) #PC1
+points(X2[,1], X2[,2], col = "#00000077", pch = 16, cex = 1)
 
-segments(x0=x1[13], y0=x2[13], x1=X1[13,1], y1=X1[13,2], col="#339900", lwd=2, lty=1)
-segments(x0=x1[13], y0=x2[13], x1=X2[13,1], y1=X2[13,2], col="#339900", lwd=2, lty=1)
-points(x1[13], x2[13], col = "purple", pch=16, cex=2)
-points(X1[13,1], X1[13,2], col = "#FF66FF", pch = 16, cex=1.5)
-points(X2[13,1], X2[13,2], col = "#FF66FF", pch = 16, cex=1.5)
+segments(x0 = x1[13], y0 = x2[13], x1 = X1[13,1], y1 = X1[13,2], col = "#339900", lwd = 2, lty = 1)
+segments(x0 = x1[13], y0 = x2[13], x1 = X2[13,1], y1 = X2[13,2], col = "#339900", lwd = 2, lty = 1)
+points(x1[13], x2[13], col = "purple", pch = 16, cex = 2)
+points(X1[13,1], X1[13,2], col = "#FF66FF", pch = 16, cex = 1.5)
+points(X2[13,1], X2[13,2], col = "#FF66FF", pch = 16, cex = 1.5)
 
-text(x=max(X1[,1])*1.05, y=max(X1[,2])*1.05, "PC1 (64%)")
-text(x=min(X2[,1])*1.61, y=max(X2[,2])*1.61, "PC2 (36%)")
+text(x = max(X1[,1])*1.05, y = max(X1[,2])*1.05, "PC1 (64%)")
+text(x = min(X2[,1])*1.61, y = max(X2[,2])*1.61, "PC2 (36%)")
 ```
 
 # 3-Dimensional PCA Example
@@ -212,14 +212,14 @@ X3 = Z3 %*% t(U) #Project Z2 back into X-space
 * Control the 3D plot with your mouse.  Scroll to zoom in and out.
 
 ```{r 3dData, eval = TRUE, echo = FALSE, results = TRUE, warning = FALSE, message = FALSE}
-spheres3d(x = x1_err, y = x2_err, z = x3, col="#0033FF", radius=.05, point_antialias = TRUE, fog=FALSE)
-rgl.bg(sphere=FALSE, fogtype="linear", color="white")
+spheres3d(x = x1_err, y = x2_err, z = x3, col = "#0033FF", radius = .05, point_antialias = TRUE, fog = FALSE)
+rgl.bg(sphere = FALSE, fogtype = "linear", color = "white")
 rgl.lines(c(-3,3), c(0, 0), c(0, 0), col = "black")
 rgl.lines(c(0, 0), c(-3,3), c(0, 0), col = "black")
 rgl.lines(c(0, 0), c(0, 0), c(-3,3), col = "black")
-rgl.texts(1.1 * -3, 0, 0, "x1", col = "black", adj = 0.5, cex=1.5)
-rgl.texts(0, 1.1 * -3, 0, "x2", col = "black", adj = 0.5, cex=1.5)
-rgl.texts(0, 0, 1.1 * -3, "x3", col = "black", adj = 0.5, cex=1.5)
+rgl.texts(1.1 * -3, 0, 0, "x1", col = "black", adj = 0.5, cex = 1.5)
+rgl.texts(0, 1.1 * -3, 0, "x2", col = "black", adj = 0.5, cex = 1.5)
+rgl.texts(0, 0, 1.1 * -3, "x3", col = "black", adj = 0.5, cex = 1.5)
 
 rglwidget(width = 600, height = 600)
 ```
@@ -229,18 +229,18 @@ rglwidget(width = 600, height = 600)
 * Control the 3D plot with your mouse.  Scroll to zoom in and out.
 
 ```{r 3dDataPC1scores, eval = TRUE, echo = FALSE, results = TRUE, warning = FALSE, message = FALSE}
-spheres3d(x = x1_err, y = x2_err, z = x3, col="#0033FF", radius=.05, point_antialias = TRUE, fog=FALSE)
-rgl.bg(sphere=FALSE, fogtype="linear", color="white")
+spheres3d(x = x1_err, y = x2_err, z = x3, col = "#0033FF", radius = .05, point_antialias = TRUE, fog = FALSE)
+rgl.bg(sphere = FALSE, fogtype = "linear", color = "white")
 rgl.lines(c(-3,3), c(0, 0), c(0, 0), col = "black")
 rgl.lines(c(0, 0), c(-3,3), c(0, 0), col = "black")
 rgl.lines(c(0, 0), c(0, 0), c(-3,3), col = "black")
-rgl.texts(1.1 * -3, 0, 0, "x1", col = "black", adj = 0.5, cex=1.5)
-rgl.texts(0, 1.1 * -3, 0, "x2", col = "black", adj = 0.5, cex=1.5)
-rgl.texts(0, 0, 1.1 * -3, "x3", col = "black", adj = 0.5, cex=1.5)
+rgl.texts(1.1 * -3, 0, 0, "x1", col = "black", adj = 0.5, cex = 1.5)
+rgl.texts(0, 1.1 * -3, 0, "x2", col = "black", adj = 0.5, cex = 1.5)
+rgl.texts(0, 0, 1.1 * -3, "x3", col = "black", adj = 0.5, cex = 1.5)
 
-lines3d(X1[,1], X1[,2], X1[,3], color="#FF0000", line_antialias = TRUE, lwd=5)
-text3d(max(X1[,1])*1.1, max(X1[,2])*1.1, max(X1[,3])*1.1, texts="PC 1 (42%)", cex=1.5, col="purple")
-spheres3d(X1[,1],X1[,2],X1[,3], radius=.05, color=rainbow(100)[rank(X[,1])], fog=TRUE, fogtype="linear")
+lines3d(X1[,1], X1[,2], X1[,3], color = "#FF0000", line_antialias = TRUE, lwd = 5)
+text3d(max(X1[,1])*1.1, max(X1[,2])*1.1, max(X1[,3])*1.1, texts = "PC 1 (42%)", cex = 1.5, col = "purple")
+spheres3d(X1[,1],X1[,2],X1[,3], radius = .05, color = rainbow(100)[rank(X[,1])], fog = TRUE, fogtype = "linear")
 
 rglwidget(width = 600, height = 600)
 ```
@@ -250,22 +250,22 @@ rglwidget(width = 600, height = 600)
 * Control the 3D plot with your mouse.  Scroll to zoom in and out.
 
 ```{r 3dDataPC1scoresPC2scores, eval = TRUE, echo = FALSE, results = TRUE, warning = FALSE, message = FALSE}
-spheres3d(x = x1_err, y = x2_err, z = x3, col="#0033FF", radius=.05, point_antialias = TRUE, fog=FALSE)
-rgl.bg(sphere=FALSE, fogtype="linear", color="white")
+spheres3d(x = x1_err, y = x2_err, z = x3, col = "#0033FF", radius = .05, point_antialias = TRUE, fog = FALSE)
+rgl.bg(sphere = FALSE, fogtype = "linear", color = "white")
 rgl.lines(c(-3,3), c(0, 0), c(0, 0), col = "black")
 rgl.lines(c(0, 0), c(-3,3), c(0, 0), col = "black")
 rgl.lines(c(0, 0), c(0, 0), c(-3,3), col = "black")
-rgl.texts(1.1 * -3, 0, 0, "x1", col = "black", adj = 0.5, cex=1.5)
-rgl.texts(0, 1.1 * -3, 0, "x2", col = "black", adj = 0.5, cex=1.5)
-rgl.texts(0, 0, 1.1 * -3, "x3", col = "black", adj = 0.5, cex=1.5)
+rgl.texts(1.1 * -3, 0, 0, "x1", col = "black", adj = 0.5, cex = 1.5)
+rgl.texts(0, 1.1 * -3, 0, "x2", col = "black", adj = 0.5, cex = 1.5)
+rgl.texts(0, 0, 1.1 * -3, "x3", col = "black", adj = 0.5, cex = 1.5)
 
-lines3d(X1[,1], X1[,2], X1[,3], color="#FF0000", line_antialias = TRUE, lwd=5)
-text3d(max(X1[,1])*1.1, max(X1[,2])*1.1, max(X1[,3])*1.1, texts="PC 1 (42%)", cex=1.5, col="purple")
-spheres3d(X1[,1],X1[,2],X1[,3], radius=.05, color=rainbow(100)[rank(X[,1])], fog=TRUE, fogtype="linear")
+lines3d(X1[,1], X1[,2], X1[,3], color = "#FF0000", line_antialias = TRUE, lwd = 5)
+text3d(max(X1[,1])*1.1, max(X1[,2])*1.1, max(X1[,3])*1.1, texts = "PC 1 (42%)", cex = 1.5, col = "purple")
+spheres3d(X1[,1],X1[,2],X1[,3], radius = .05, color = rainbow(100)[rank(X[,1])], fog = TRUE, fogtype = "linear")
 
-lines3d(X2[,1],X2[,2],X2[,3], color="#FF0000", line_antialias = TRUE, lwd=5)
-text3d(max(X2[,1])*1.1, max(X2[,2])*1.1, max(X2[,3])*1.1, texts="PC 2 (34%)", cex=1.5, col="purple")
-spheres3d(X2[,1],X2[,2],X2[,3], radius=.05, color=rainbow(100)[rank(X[,1])], fog=TRUE, fogtype="linear")
+lines3d(X2[,1],X2[,2],X2[,3], color = "#FF0000", line_antialias = TRUE, lwd = 5)
+text3d(max(X2[,1])*1.1, max(X2[,2])*1.1, max(X2[,3])*1.1, texts = "PC 2 (34%)", cex = 1.5, col = "purple")
+spheres3d(X2[,1],X2[,2],X2[,3], radius = .05, color = rainbow(100)[rank(X[,1])], fog = TRUE, fogtype = "linear")
 
 rglwidget(width = 600, height = 600)
 ```
@@ -275,26 +275,26 @@ rglwidget(width = 600, height = 600)
 * Control the 3D plot with your mouse.  Scroll to zoom in and out.
 
 ```{r 3dDataPC1scoresPC2scoresPC3scores, eval = TRUE, echo = FALSE, results = TRUE, warning = FALSE, message = FALSE}
-spheres3d(x = x1_err, y = x2_err, z = x3, col="#0033FF", radius=.05, point_antialias = TRUE, fog=FALSE)
-rgl.bg(sphere=FALSE, fogtype="linear", color="white")
+spheres3d(x = x1_err, y = x2_err, z = x3, col = "#0033FF", radius = .05, point_antialias = TRUE, fog = FALSE)
+rgl.bg(sphere = FALSE, fogtype = "linear", color = "white")
 rgl.lines(c(-3,3), c(0, 0), c(0, 0), col = "black")
 rgl.lines(c(0, 0), c(-3,3), c(0, 0), col = "black")
 rgl.lines(c(0, 0), c(0, 0), c(-3,3), col = "black")
-rgl.texts(1.1 * -3, 0, 0, "x1", col = "black", adj = 0.5, cex=1.5)
-rgl.texts(0, 1.1 * -3, 0, "x2", col = "black", adj = 0.5, cex=1.5)
-rgl.texts(0, 0, 1.1 * -3, "x3", col = "black", adj = 0.5, cex=1.5)
+rgl.texts(1.1 * -3, 0, 0, "x1", col = "black", adj = 0.5, cex = 1.5)
+rgl.texts(0, 1.1 * -3, 0, "x2", col = "black", adj = 0.5, cex = 1.5)
+rgl.texts(0, 0, 1.1 * -3, "x3", col = "black", adj = 0.5, cex = 1.5)
 
-lines3d(X1[,1], X1[,2], X1[,3], color="#FF0000", line_antialias = TRUE, lwd=5)
-text3d(max(X1[,1])*1.1, max(X1[,2])*1.1, max(X1[,3])*1.1, texts="PC 1 (42%)", cex=1.5, col="purple")
-spheres3d(X1[,1],X1[,2],X1[,3], radius=.05, color=rainbow(100)[rank(X[,1])], fog=TRUE, fogtype="linear")
+lines3d(X1[,1], X1[,2], X1[,3], color = "#FF0000", line_antialias = TRUE, lwd = 5)
+text3d(max(X1[,1])*1.1, max(X1[,2])*1.1, max(X1[,3])*1.1, texts = "PC 1 (42%)", cex = 1.5, col = "purple")
+spheres3d(X1[,1],X1[,2],X1[,3], radius = .05, color = rainbow(100)[rank(X[,1])], fog = TRUE, fogtype = "linear")
 
-lines3d(X2[,1],X2[,2],X2[,3], color="#FF0000", line_antialias = TRUE, lwd=5)
-text3d(max(X2[,1])*1.1, max(X2[,2])*1.1, max(X2[,3])*1.1, texts="PC 2 (34%)", cex=1.5, col="purple")
-spheres3d(X2[,1],X2[,2],X2[,3], radius=.05, color=rainbow(100)[rank(X[,1])], fog=TRUE, fogtype="linear")
+lines3d(X2[,1],X2[,2],X2[,3], color = "#FF0000", line_antialias  =  TRUE, lwd = 5)
+text3d(max(X2[,1])*1.1, max(X2[,2])*1.1, max(X2[,3])*1.1, texts = "PC 2 (34%)", cex = 1.5, col = "purple")
+spheres3d(X2[,1],X2[,2],X2[,3], radius = .05, color = rainbow(100)[rank(X[,1])], fog = TRUE, fogtype = "linear")
 
-lines3d(X3[,1],X3[,2],X3[,3], radius=.05, color="#FF0000", line_antialias = TRUE, lwd=5)
-text3d(min(X3[,1])*1.1, min(X3[,2])*1.1, max(X3[,3])*1.1, texts="PC 3 (24%)", cex=1.5, col="purple")
-spheres3d(X3[,1],X3[,2],X3[,3], radius=.05, color=rainbow(100)[rank(X[,1])], fog=TRUE, fogtype="linear")
+lines3d(X3[,1],X3[,2],X3[,3], radius = .05, color = "#FF0000", line_antialias  =  TRUE, lwd = 5)
+text3d(min(X3[,1])*1.1, min(X3[,2])*1.1, max(X3[,3])*1.1, texts = "PC 3 (24%)", cex = 1.5, col = "purple")
+spheres3d(X3[,1],X3[,2],X3[,3], radius = .05, color = rainbow(100)[rank(X[,1])], fog = TRUE, fogtype = "linear")
 
 rglwidget(width = 600, height = 600)
 ```
@@ -335,29 +335,31 @@ knitr::include_graphics('pca_with_application_img2.png')
 ## Latino Stress Analytic Data
 
 ```{r shressDataShow, eval = TRUE, echo = FALSE, results = TRUE, warning = FALSE, message = FALSE}
-d_DT <- datatable(farmstress, escape = FALSE,
-                  extensions = c('Buttons'),
-                  class = 'cell-border stripe',
-                  rownames = TRUE,
-                  options = list(
-                    dom = 'Bfrtip',
-                    pageLength = 5,
-                    deferRender = TRUE,
-                    responsive = TRUE,
-                    scrollX = TRUE,
-                    scrollCollaspe = TRUE,
-                    paging = TRUE,
-                    autoWidth = TRUE,
-                    keys = TRUE,
-                    buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
-                  ))
+d_DT <- datatable(
+    farmstress, escape = FALSE,
+    extensions = c('Buttons'),
+    class = 'cell-border stripe',
+    rownames = TRUE,
+    options = list(
+        dom = 'Bfrtip',
+        pageLength = 5,
+        deferRender = TRUE,
+        responsive = TRUE,
+        scrollX = TRUE,
+        scrollCollaspe = TRUE,
+        paging = TRUE,
+        autoWidth = TRUE,
+        keys = TRUE,
+        buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+    ))
 
 d_DT
 
-html(contents(farmstress), 
-     sortlevels = TRUE,
-     maxlevels = Inf, 
-     levelType = "table")
+html(
+    contents(farmstress), 
+    sortlevels = TRUE,
+    maxlevels = Inf, 
+    levelType = "table")
 ```
 
 ```{r pcaSetup, eval = TRUE, echo = FALSE, results = TRUE, warning = FALSE, message = FALSE}
@@ -402,9 +404,9 @@ round(farmstressS1_pca_importance, 2)
 * We can show this graphically using a Scree Plot.
 
 ```{r pcScree, eval = TRUE, echo = FALSE, results = TRUE, warning = FALSE, message = FALSE, fig.height = 6, fig.width = 10}
-plot(x = 1:dim(farmstressS1_pca_importance)[2], y = farmstressS1_pca_importance[2,], pch = 16, type = "b", col="#336699", axes = F, xlab = "PC Axis", ylab = "Proportion of Varance Explained", main = "Proportion of Variance Explained by Each PC")
-axis(1,at=1:24,labels=1:24)
-axis(2,at=seq(from = 0, to = 40)/100, las = 2, lty = 3)
+plot(x = 1:dim(farmstressS1_pca_importance)[2], y = farmstressS1_pca_importance[2,], pch = 16, type = "b", col = "#336699", axes = F, xlab = "PC Axis", ylab = "Proportion of Varance Explained", main = "Proportion of Variance Explained by Each PC")
+axis(1, at = 1:24, labels = 1:24)
+axis(2, at = seq(from = 0, to = 40)/100, las = 2, lty = 3)
 ```
 
 ## Loading Matrix
@@ -435,7 +437,7 @@ datCor <- cor(dat)
 
 # Create the PCA Biplot
 normalize <- function(x) {
-  return ((x - min(x)) / (max(x) - min(x)))
+  return((x - min(x)) / (max(x) - min(x)))
 }
 
 plotDataScores <- cbind(occupation = farmstressS1Occupation, as.data.frame(farmstressS1_pca_scores[, c("PC1", "PC2")]))
@@ -446,13 +448,14 @@ plotDataScores[, "PC2"] <- scale(normalize(plotDataScores[, "PC2"]), center = TR
 plotDataLoadings <- as.data.frame(farmstressS1_pca_loadings)
 
 ggplot() + 
-  geom_point(data = plotDataScores, mapping = aes(x = PC1, y = PC2, colour = occupation)) + 
-  scale_color_manual(values = c("#8F57BA55", "#57BA7D55")) + 
-  geom_segment(data = plotDataLoadings, aes(x = 0, y = 0, xend = PC1, yend = PC2), arrow = arrow(length = unit(0.03, "npc")), alpha = 0.2) + 
-  geom_text(data = plotDataLoadings, mapping = aes(x = PC1, y = PC2, label = rownames(plotDataLoadings)), hjust = 1, vjust = -0.2, colour = "darkred", size = 4, check_overlap = TRUE) + 
-  xlab(paste("PC1 (", round(farmstressS1_pca_importance["Proportion of Variance", "PC1"]*100, 1),"%)", sep = "")) + 
-  ylab(paste("PC2 (", round(farmstressS1_pca_importance["Proportion of Variance", "PC2"]*100, 1),"%)", sep = "")) +
-  theme(axis.line = element_line(colour = "black"),
+    geom_point(data = plotDataScores, mapping = aes(x = PC1, y = PC2, colour = occupation)) + 
+    scale_color_manual(values = c("#8F57BA55", "#57BA7D55")) + 
+    geom_segment(data = plotDataLoadings, aes(x = 0, y = 0, xend = PC1, yend = PC2), arrow = arrow(length = unit(0.03, "npc")), alpha = 0.2) + 
+    geom_text(data = plotDataLoadings, mapping = aes(x = PC1, y = PC2, label = rownames(plotDataLoadings)), hjust = 1, vjust = -0.2, colour = "darkred", size = 4, check_overlap = TRUE) + 
+    xlab(paste("PC1 (", round(farmstressS1_pca_importance["Proportion of Variance", "PC1"]*100, 1),"%)", sep = "")) + 
+    ylab(paste("PC2 (", round(farmstressS1_pca_importance["Proportion of Variance", "PC2"]*100, 1),"%)", sep = "")) +
+    theme(
+        axis.line = element_line(colour = "black"),
         panel.border = element_rect(colour = "black", fill = NA, size = 1),
         axis.text = element_text(size = 12),
         axis.text.x = element_text(angle = 50, hjust = 1),
@@ -475,7 +478,7 @@ We can use multivariate analysis of variance to test the null hypothesis that st
 
 ```{r pcRegression, eval = TRUE, echo = FALSE, results = TRUE, warning = FALSE, message = FALSE}
 fit <- manova(farmstressS1_pca_scores ~ farmstressS1Occupation)
-summary(fit, test="Pillai")
+summary(fit, test = "Pillai")
 ```
 
 ## Post-Hoc Analyses
@@ -488,27 +491,27 @@ postHocData <- postHocData[, (-1)*which(colnames(postHocData) == "violence")]
 postHocData <- postHocData[, (-1)*which(colnames(postHocData) == "druguse")]
 
 resFun <- function(x, d) {
-  # x = "bills"
-  # d = postHocData
-  
-  lab <- label(d[, x])
-  lab <- paste(lab, " (", x, ")", sep = "")
-  
-  resFit <- t.test(d[which(d$occupation == "Farmworker"), x], d[which(d$occupation == "Non-Farmworker"), x])
-  
-  est <- round(resFit$estimate, 4)
-
-  estSD <- paste(est, " (", c(round(sd(d[which(d$occupation == "Farmworker"), x], na.rm = TRUE), 2), round(sd(d[which(d$occupation == "Non-Farmworker"), x], na.rm = TRUE), 2)), ")", sep = "")
-  
-  estDiff <- paste(round(est[1] - est[2], 4), " [", round(resFit$conf.int[1], 4), ", ", round(resFit$conf.int[2], 4), "]", sep = "")
-  
-  pval <- round(resFit$p.value, 4)
-
-  res <- c(lab, estSD, estDiff, pval)
-  
-  names(res) <- c("", "Farmworker, Mean (SD)", "Non-Farmworker, Mean (SD)", "Difference [95% CI]", "FDR Adjusted P-value")
-  
-  return(res)
+    # x = "bills"
+    # d = postHocData
+    
+    lab <- label(d[, x])
+    lab <- paste(lab, " (", x, ")", sep = "")
+    
+    resFit <- t.test(d[which(d$occupation == "Farmworker"), x], d[which(d$occupation == "Non-Farmworker"), x])
+    
+    est <- round(resFit$estimate, 4)
+    
+    estSD <- paste(est, " (", c(round(sd(d[which(d$occupation == "Farmworker"), x], na.rm = TRUE), 2), round(sd(d[which(d$occupation == "Non-Farmworker"), x], na.rm = TRUE), 2)), ")", sep = "")
+    
+    estDiff <- paste(round(est[1] - est[2], 4), " [", round(resFit$conf.int[1], 4), ", ", round(resFit$conf.int[2], 4), "]", sep = "")
+    
+    pval <- round(resFit$p.value, 4)
+    
+    res <- c(lab, estSD, estDiff, pval)
+    
+    names(res) <- c("", "Farmworker, Mean (SD)", "Non-Farmworker, Mean (SD)", "Difference [95% CI]", "FDR Adjusted P-value")
+    
+    return(res)
 }
 
 resList <- sapply(colnames(postHocData[, c(-1, -2)]), resFun, d = postHocData, simplify = FALSE)
