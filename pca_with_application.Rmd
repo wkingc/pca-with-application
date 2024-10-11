@@ -8,14 +8,18 @@ output:
 ---
 
 ```{r libraries, eval = TRUE, echo = FALSE, results = FALSE, warning = FALSE, message = FALSE}
-package_loader <- function(x, ...) {
-    if (x %in% rownames(installed.packages()) == FALSE) install.packages(x)
-    library(x, ...)
-}
-
-packages <- c("knitr", "bookdown", "kableExtra", "reshape2", "Hmisc", "dplyr", "DT", "scatterplot3d", "rgl", "ggplot2", "ellipse", "lattice")
-
-invisible(sapply(X = packages, FUN = package_loader, character.only = TRUE))
+library("knitr")
+library("bookdown")
+library("kableExtra")
+library("reshape2")
+library("Hmisc")
+library("dplyr")
+library("DT")
+library("scatterplot3d")
+library("rgl")
+library("ggplot2")
+library("ellipse")
+library("lattice")
 ```
 
 # Introduction
