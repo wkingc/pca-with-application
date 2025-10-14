@@ -2,5 +2,3 @@
 .Rhistory
 .Ruserdata
 .DS_Store
-renv
-.Rprofile
